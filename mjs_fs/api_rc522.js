@@ -1,6 +1,6 @@
 let rc522= {
   init : ffi('void rc522_init_set(void)'),
-  near: ffi('void rc522_card_near(int*)'),
+  near: ffi('int rc522_card_near(void)'),
   
   c2hex: function (value){
     let i = 0;
