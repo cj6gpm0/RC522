@@ -255,25 +255,14 @@ bool rc522_anticoll(int *return_data){
   return err;
 }
 
-void rc522_card_near(void){
+void rc522_card_near(int* sd1){
   int type_data[2];
   int serial_data[5];
   if (rc522_request(type_data)){
     rc522_anticoll(serial_data);
     printf("serial number: 0x%x 0x%x 0x%x 0x%x 0x%x\n", serial_data[0], serial_data[1], serial_data[2], serial_data[3], serial_data[4]);
     printf("card type : 0x%x 0x%x\n", type_data[0], type_data[1]);
-      FILE *pFile;
-      char buffer[]={ '1','2' };
-      pFile = fopen( "/fs/test.txt","w" );
-      if( NULL == pFile ){
-          printf( "open failure" );
-      }else{
-          fwrite(buffer,1,sizeof(buffer),pFile);
-      }
-
-
-
-      fclose(pFile);
+    *sd1= serial_data[0];
   }
 }
 
