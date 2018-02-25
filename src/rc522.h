@@ -264,6 +264,7 @@ int rc522_card_near(void){
     printf("card type : 0x%x 0x%x\n", type_data[0], type_data[1]);
     return serial_data[0];
   }
+  return 0;
 }
 
 
