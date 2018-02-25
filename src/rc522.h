@@ -277,7 +277,7 @@ int rc522_card_near_c2mjs(int data_count)
     a=rc522_card_near(card_buf);
 
   }
-  printf('%x',card_buf[0]);
+  printf("%x",card_buf[0]);
   return a;
 }
 
