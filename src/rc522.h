@@ -267,7 +267,6 @@ void rc522_card_near(void){
       pFile = fopen( "/fs/test.txt","w" );
       if( NULL == pFile ){
           printf( "open failure" );
-          return 1;
       }else{
           fwrite(buffer,1,sizeof(buffer),pFile);
       }
