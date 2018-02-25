@@ -260,8 +260,8 @@ void rc522_card_near(int *return_data){
   int serial_data[5];
   if (rc522_request(type_data)){
     rc522_anticoll(serial_data);
-    printf("serial number: 0x%x 0x%x 0x%x 0x%x 0x%x\n", serial_data[0], serial_data[1], serial_data[2], serial_data[3], serial_data[4]);
-    printf("card type : 0x%x 0x%x\n", type_data[0], type_data[1]);
+    //printf("serial number: 0x%x 0x%x 0x%x 0x%x 0x%x\n", serial_data[0], serial_data[1], serial_data[2], serial_data[3], serial_data[4]);
+    //printf("card type : 0x%x 0x%x\n", type_data[0], type_data[1]);
     return_data[0]=serial_data[0];
     return_data[1]=serial_data[1];
     return_data[2]=serial_data[2];

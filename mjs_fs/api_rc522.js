@@ -5,7 +5,10 @@ let rc522= {
     let cdata=[0,0,0,0,0,0,0];
     let pnum=
     this.card_c2mjs(cdata);
-    print('serial number : '+this.c2hex(cdata[0])+' '+this.c2hex(cdata[1])+' '+this.c2hex(cdata[2])+' '+this.c2hex(cdata[3])+' '+this.c2hex(cdata[4]));
+    if((cdata[0]|cdata[1]|cdata[2]|cdata[3]|cdata[4]|cdata[5]|cdata[6])!==0){
+      print('Serial Number :'+this.c2hex(cdata[0])+' '+this.c2hex(cdata[1])+' '+this.c2hex(cdata[2])+' '+this.c2hex(cdata[3])+' '+this.c2hex(cdata[4]));
+      print('Card Type :'+this.c2hex(cdata[5])+' '+this.c2hex(cdata[6]));
+    }
     return cdata;
   },
   card_c2mjs :function(card_data){
