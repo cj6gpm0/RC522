@@ -283,7 +283,7 @@ int rc522_card_near_c2mjs(int data_count)
   if(data_count==6)
   {
     tem = card_buf[data_count];
-    card_buf={0,0,0,0,0,0,0};
+    card_buf[]={0,0,0,0,0,0,0};
     return tem;
   }
   return card_buf[data_count];
