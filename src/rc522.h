@@ -258,7 +258,6 @@ bool rc522_anticoll(int *return_data){
 void rc522_card_near(void){
   int type_data[2];
   int serial_data[5];
-  int rval  = 0;
   if (rc522_request(type_data)){
     rc522_anticoll(serial_data);
     printf("serial number: 0x%x 0x%x 0x%x 0x%x 0x%x\n", serial_data[0], serial_data[1], serial_data[2], serial_data[3], serial_data[4]);
