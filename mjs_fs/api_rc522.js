@@ -1,3 +1,4 @@
+load('api_mqtt.js');
 let rc522= {
   init : ffi('void rc522_init_set(void)'),
   near_c2mjs: ffi('int rc522_card_near_c2mjs(int)'),
@@ -8,6 +9,10 @@ let rc522= {
     if((cdata[0]|cdata[1]|cdata[2]|cdata[3]|cdata[4]|cdata[5]|cdata[6])!==0){
       print('Serial Number :'+this.c2hex(cdata[0])+' '+this.c2hex(cdata[1])+' '+this.c2hex(cdata[2])+' '+this.c2hex(cdata[3])+' '+this.c2hex(cdata[4]));
       print('Card Type :'+this.c2hex(cdata[5])+' '+this.c2hex(cdata[6]));
+
+      let res = MQTT.pub('my/topic', JSON.stringify({ SN1: cdata[0], SN2: cdata[1],SN3: cdata[2], SN4: cdata[3],SN5: cdata[4], CT1: cdata[5],CT2: cdata[6]}), 1);
+      print('Published:', res ? 'yes' : 'no');
+
     }
     return cdata;
   },
