@@ -255,7 +255,7 @@ bool rc522_anticoll(int *return_data){
   return err;
 }
 
-int rc522_card_near(int* sd1){
+int rc522_card_near(void){
   int type_data[2];
   int serial_data[5];
   if (rc522_request(type_data)){
