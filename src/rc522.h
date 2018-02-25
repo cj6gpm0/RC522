@@ -255,7 +255,7 @@ bool rc522_anticoll(int *return_data){
   return err;
 }
 
-int rc522_card_near(void){
+void rc522_card_near(void){
   int type_data[2];
   int serial_data[5];
   int rval  = 0;
@@ -264,11 +264,6 @@ int rc522_card_near(void){
     printf("serial number: 0x%x 0x%x 0x%x 0x%x 0x%x\n", serial_data[0], serial_data[1], serial_data[2], serial_data[3], serial_data[4]);
     printf("card type : 0x%x 0x%x\n", type_data[0], type_data[1]);
   }
-  for(int i = 0; i != 2; i++){
-    rval=rval*256+serial_data[i];
-  }
-  
-  return rval;
 }
 
 
