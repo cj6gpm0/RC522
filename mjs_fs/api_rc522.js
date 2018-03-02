@@ -1,4 +1,6 @@
 load('api_mqtt.js');
+load('api_gpio.js');
+load('api_pwm.js');
 let rc522= {
   init : ffi('void rc522_init_set(void)'),
   near_c2mjs: ffi('int rc522_card_near_c2mjs(int)'),
@@ -10,7 +12,7 @@ let rc522= {
       print('Serial Number :'+this.c2hex(cdata[0])+' '+this.c2hex(cdata[1])+' '+this.c2hex(cdata[2])+' '+this.c2hex(cdata[3])+' '+this.c2hex(cdata[4]));
       print('Card Type :'+this.c2hex(cdata[5])+' '+this.c2hex(cdata[6]));
 
-      let res = MQTT.pub('my/topic', JSON.stringify({ SN1: cdata[0], SN2: cdata[1],SN3: cdata[2], SN4: cdata[3],SN5: cdata[4], CT1: cdata[5],CT2: cdata[6]}), 1);
+      let res = MQTT.pub('my/topic', JSON.stringify({ "STATE": GPIO.read(0),"\nSN1": cdata[0], "\nSN2": cdata[1],"\nSN3": cdata[2], "\nSN4": cdata[3],"\nSN5": cdata[4], "\nCT1": cdata[5],"\nCT2": cdata[6]}), 1);
       print('Published:', res ? 'yes' : 'no');
 
     }
@@ -20,7 +22,6 @@ let rc522= {
     let count =0;
     while(count<7){
       card_data[count]=this.near_c2mjs(count);
-      //print(card_data[count]);
       count++;
     }
   },
