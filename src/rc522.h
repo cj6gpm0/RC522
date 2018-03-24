@@ -66,7 +66,10 @@ void cvhex(int data){
   printf("0x%x", data);
 }
 
-
+const char* eventGetString(const void* data)
+{
+	return (const char*)data;
+}
 
 int rc522_read(int addr){
   
